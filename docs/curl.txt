@@ -1,0 +1,1 @@
+curl --location --request PUT 'http://localhost:8000/obsput?timestamp=true&doc_id=0-WorkInProgress/IncomingData-2.md&list=true&type=checkbox' --header 'Content-Type: text/plain' --data-raw 'Test from cUrl'

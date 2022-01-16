@@ -1,0 +1,4 @@
+fastapi
+uvicorn
+CouchDB == 1.2
+PyYAML == 5.3.1

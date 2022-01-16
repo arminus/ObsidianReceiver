@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+
+  caddy:
+    image: lucaslorentz/caddy-docker-proxy:ci-alpine-arm32v6
+    container_name: caddy
+    ports:
+      - 80:80
+      # - 443:443
+    environment:
+      - CADDY_INGRESS_NETWORKS=caddy
+    networks:
+      - caddy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/caddy:/data
+    restart: unless-stopped
+
+  obsreceiver:
+    image: obsreceiver:latest
+    container_name: obsreceiver
+    volumes:
+      - ./obsidian_conf:/root/obsidian_conf
+    environment:
+     - PORT=8045
+    labels:
+      caddy: ${OBS_SERVER_DOMAIN}
+      caddy.reverse_proxy: "{{upstreams 8045}}"
+      caddy.basicauth: "/*"
+      # generate this with docker exec -it caddy caddy hash-password
+      caddy.basicauth.admin: "${OBS_SERVER_PASSWORD}"
+    restart: unless-stopped
+    networks:
+      - caddy
+
+networks:
+  caddy:
+    external: true

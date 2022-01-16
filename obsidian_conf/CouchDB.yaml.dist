@@ -1,0 +1,10 @@
+couchdb:
+  dbname: "<name of the CouchDB obdsidian database>"
+  username: "<username>"
+  password: "<password>"
+  # CouchDB DB address part, e.g. https://couchdb.my.domain.com/obs/"
+  url: "<CouchDB address part>"
+obsidian:
+  # the fully qualified name of the "receiver" .md file, e.g. 0-WorkInProgress/IncomingData.md
+  target_doc_id: "0-WorkInProgress/IncomingData.md"
+  timestamp_format: "%Y-%m-%d %H:%M:%S"

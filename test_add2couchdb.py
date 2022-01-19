@@ -6,7 +6,7 @@ class Add(unittest.TestCase):
     obsCdb = None
     test_link = "https://github.com/vrtmrz/obsidian-livesync/"
     # target_doc_id = "UndefinedDummyFailure"
-    target_doc_id = "0-WorkInProgress/IncomingData.md"
+    target_doc_id = "1-Obsidian/Test.md" # change this to an existing document in Obsidian
 
     def setUp(self):
         self.obsCdb = OBSCouchDB(self.target_doc_id)

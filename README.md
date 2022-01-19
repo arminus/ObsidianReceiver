@@ -72,6 +72,9 @@ docker exec -it caddy caddy hash-password
 ```
 - copy and paste the generated password into .env OBS_SERVER_PASSWORD and restart the stack
 
+## Test code
+
+There's a tiny test script which can be used to test the server, for this to work, change line 9 of test_add2couchdb.py with the name of an existing Note/Document in your Obsidian vault, then simply run the script.
 # Calling the Server's endpoint with a GET request
 
 The base URL will either be:

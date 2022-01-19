@@ -33,7 +33,3 @@ class Add(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(failfast=True)
-
-# https://couchdb.arminus.hopto.org/obsvps/_utils/#database/obsidian/0-WorkInProgress%2FCouchDB-Test.md
-
-# 0-WorkInProgress/CouchDB-Test.md

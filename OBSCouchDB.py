@@ -103,14 +103,29 @@ class OBSCouchDB:
         """
 
         try:
-            unique_content = content + str(round(time.time_ns()/1000000))
-            checksum = '%08X' % (binascii.crc32(unique_content.encode('utf-8')) & 0xffffffff)
+            # The same content will create the same hash.
+            # Therefore, the same hash means it probably had been made from the same content. (except in very rare cases).
+            content += "\n"
+            checksum = '%08X' % (binascii.crc32(content.encode('utf-8')) & 0xffffffff)
             new_id = "h:"+checksum.lower()
 
-            content += "\n"
-            self.db[new_id] = {'data': content, 'type': 'leaf'}
-            if self.trace:
-                print(f"Created new document {new_id}")
+            # Checking existence.
+            # It uses the HTTP HEAD method, so we can keep lower bandwidth.
+            # We only have to check the http://example.com/h:12345678 exists.
+            try:
+                if new_id in self.db:
+                    # The same chunk is already there, we can reuse the chunk.
+                    # So if we post common content, database size wouldn't be expanded so much.
+                    if self.trace:
+                        print(f"document {new_id} exists. skipped")
+                else:
+                    # Or create the new chunk.
+                    self.db[new_id] = {'data': content, 'type': 'leaf'}
+                    if self.trace:
+                        print(f"Created new document {new_id}")
+            except Exception as e:
+                self.error_msg = e.__class__
+                return ""
 
             children = self.target_doc["children"]
 

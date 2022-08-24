@@ -116,4 +116,4 @@ The best way to share text from Android is to use [HTTP Request Shortcuts](https
 
 ## iOS
 
-Here's how to create an iOS Shortcut so that a browser-link can be shared into Obsidian: [iOS Shortcut](iOS-Shortcut.md)
+Here's how to create an iOS Shortcut so that a browser-link can be shared into Obsidian: [iOS Shortcut](docs/iOS-Shortcut.md)

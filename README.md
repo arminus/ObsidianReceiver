@@ -29,7 +29,7 @@ WITHOUT THIS IN PLACE AND PROPERLY TESTED (AND A CHANGED DEFAULT PASSWORD! - see
 
 ## Configuring the Obsidian/CouchDB parameters
 
-Set the appropriate values in *config/CouchDB.yaml*
+Set the appropriate values in *obsidian_conf/CouchDB.yaml*
 
 This file is mounted as volume into the running Docker container and can be changed while the container is running (i.e. no restart required).
 
